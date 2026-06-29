@@ -12,7 +12,7 @@ Before you can access the application from the outside, you need to ensure two t
 1.  **Application Binding**: When starting the FastAPI server on the VM, you must bind it to all network interfaces (`0.0.0.0`) rather than just localhost. 
     You can do this by running:
     ```bash
-    uvicorn main:app --host 0.0.0.0 --port 8000
+    python -m uvicorn main:app --host 0.0.0.0 --port 8000
     ```
     *(If you are using the `start.bat` script, you may want to modify it to include `--host 0.0.0.0`)*
 

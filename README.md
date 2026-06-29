@@ -8,10 +8,10 @@ To run the application locally, you can use Uvicorn. First, make sure you have i
 
 ```bash
 pip install -r requirements.txt
-uvicorn main:app --reload
+python -m uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-By default, the application will run at `http://127.0.0.1:8000`.
+By default, the application will run at `http://127.0.0.1:8000` (or your VM's public IP).
 
 ## Testing with Postman
 
