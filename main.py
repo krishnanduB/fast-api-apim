@@ -15,6 +15,12 @@ class ItemUpdate(BaseModel):
     price: float | None = None
     tax: float | None = None
 
+class User(BaseModel):
+    username: str
+    email: str
+    full_name: str | None = None
+    disabled: bool | None = False
+
 @app.get("/")
 def read_root():
     return {"message": "Hello World"}
@@ -38,3 +44,21 @@ def partially_update_item(item_id: int, item: ItemUpdate):
 @app.delete("/items/{item_id}")
 def delete_item(item_id: int):
     return {"message": f"Item {item_id} deleted successfully", "item_id": item_id}
+
+# --- User Endpoints ---
+
+@app.get("/users/{user_id}")
+def read_user(user_id: int):
+    return {"user_id": user_id, "email": f"user{user_id}@example.com"}
+
+@app.post("/users/")
+def create_user(user: User):
+    return {"message": f"User {user.username} created successfully", "user": user}
+
+@app.put("/users/{user_id}")
+def update_user(user_id: int, user: User):
+    return {"message": f"User {user_id} updated successfully", "user_id": user_id, "user": user}
+
+@app.delete("/users/{user_id}")
+def delete_user(user_id: int):
+    return {"message": f"User {user_id} deleted successfully", "user_id": user_id}

@@ -129,4 +129,81 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
+### 7. Create User (POST)
+- **Method:** `POST`
+- **URL:** `http://127.0.0.1:8000/users/`
+- **Description:** Creates a new user.
+- **Body:** Under the Body tab, select **raw** and choose **JSON** format.
+  ```json
+  {
+      "username": "johndoe",
+      "email": "john@example.com",
+      "full_name": "John Doe",
+      "disabled": false
+  }
+  ```
+- **Expected Response:**
+  ```json
+  {
+      "message": "User johndoe created successfully",
+      "user": {
+          "username": "johndoe",
+          "email": "john@example.com",
+          "full_name": "John Doe",
+          "disabled": false
+      }
+  }
+  ```
+
+### 8. Read User (GET)
+- **Method:** `GET`
+- **URL:** `http://127.0.0.1:8000/users/1`
+- **Description:** Retrieves a user by their ID.
+- **Expected Response:**
+  ```json
+  {
+      "user_id": 1,
+      "email": "user1@example.com"
+  }
+  ```
+
+### 9. Update User (PUT)
+- **Method:** `PUT`
+- **URL:** `http://127.0.0.1:8000/users/1`
+- **Description:** Updates an existing user.
+- **Body:** Under the Body tab, select **raw** and choose **JSON** format.
+  ```json
+  {
+      "username": "johndoe_updated",
+      "email": "john.updated@example.com",
+      "full_name": "John Doe Updated",
+      "disabled": true
+  }
+  ```
+- **Expected Response:**
+  ```json
+  {
+      "message": "User 1 updated successfully",
+      "user_id": 1,
+      "user": {
+          "username": "johndoe_updated",
+          "email": "john.updated@example.com",
+          "full_name": "John Doe Updated",
+          "disabled": true
+      }
+  }
+  ```
+
+### 10. Delete User (DELETE)
+- **Method:** `DELETE`
+- **URL:** `http://127.0.0.1:8000/users/1`
+- **Description:** Deletes a user by their ID.
+- **Expected Response:**
+  ```json
+  {
+      "message": "User 1 deleted successfully",
+      "user_id": 1
+  }
+  ```
+
 > **Tip:** You can also view the automatically generated Swagger UI documentation by navigating to `http://127.0.0.1:8000/docs` in your web browser while the application is running. This provides a great interactive interface for testing your API right in the browser!
