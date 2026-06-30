@@ -48,8 +48,31 @@ Here is an example policy that limits calls to **5 requests per 60 seconds** per
 
 *(Alternatively, you can use `<rate-limit-by-key>` to limit based on the caller's IP address instead of their subscription key).*
 
-### 5. Save and Test
-Once saved, any client exceeding the configured rate limit will receive an HTTP `429 Too Many Requests` error response directly from Azure APIM, meaning the excessive requests will never even touch your FastAPI backend!
+### 5. Modifying the HTTP Request (Set Query Parameter)
+You can also use Inbound Policies to modify the HTTP request before it reaches your backend. For example, if you want to forcefully set or override a query parameter (like forcing `limit=2`), you can use the `<set-query-parameter>` tag:
+
+```xml
+<policies>
+    <inbound>
+        <base />
+        <set-query-parameter name="limit" exists-action="override">
+            <value>2</value>
+        </set-query-parameter>
+    </inbound>
+    <backend>
+        <base />
+    </backend>
+    <outbound>
+        <base />
+    </outbound>
+    <on-error>
+        <base />
+    </on-error>
+</policies>
+```
+
+### 6. Save and Test
+Once saved, any client exceeding the configured rate limit will receive an HTTP `429 Too Many Requests` error response directly from Azure APIM, meaning the excessive requests will never even touch your FastAPI backend! Furthermore, if they do successfully hit your API, their request will be automatically modified by the policies (e.g., the `limit` query string parameter will be set to `2`).
 
 ---
 
