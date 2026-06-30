@@ -25,12 +25,14 @@ class ItemUpdate(BaseModel):
 ITEMS_FILE = os.path.join("data", "items.json")
 
 @router.get("/")
-def read_items(skip: int = 0, limit: int = 10, search: str | None = None):
+def read_items(skip: int = 0, limit: int = 10, search: str | None = None, category: str | None = None):
     items = read_data(ITEMS_FILE)
     if search:
         items = [item for item in items if search.lower() in item["name"].lower()]
+    if category:
+        items = [item for item in items if item.get("category", "").lower() == category.lower()]
     return {
-        "query_params": {"skip": skip, "limit": limit, "search": search},
+        "query_params": {"skip": skip, "limit": limit, "search": search, "category": category},
         "items": items[skip : skip + limit]
     }
 
