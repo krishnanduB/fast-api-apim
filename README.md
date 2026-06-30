@@ -283,4 +283,4 @@ To import this API into Azure APIM:
    - **API URL suffix:** *(leave blank)*
 5. Click **Create**.
 
-![Azure APIM Setup](apim-setup.png)
+![Azure APIM Setup](markdown_img/APIM.png)
