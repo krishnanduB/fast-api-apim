@@ -1,64 +1,11 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from routers import items, users
 
 app = FastAPI()
 
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-
-class ItemUpdate(BaseModel):
-    name: str | None = None
-    description: str | None = None
-    price: float | None = None
-    tax: float | None = None
-
-class User(BaseModel):
-    username: str
-    email: str
-    full_name: str | None = None
-    disabled: bool | None = False
+app.include_router(items.router)
+app.include_router(users.router)
 
 @app.get("/")
 def read_root():
     return {"message": "Hello World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: str | None = None):
-    return {"item_id": item_id, "q": q}
-
-@app.post("/items/")
-def create_item(item: Item):
-    return {"message": f"Item {item.name} created successfully", "item": item}
-
-@app.put("/items/{item_id}")
-def update_item(item_id: int, item: Item):
-    return {"message": f"Item {item_id} updated successfully", "item_id": item_id, "item": item}
-
-@app.patch("/items/{item_id}")
-def partially_update_item(item_id: int, item: ItemUpdate):
-    return {"message": f"Item {item_id} partially updated successfully", "item_id": item_id, "item": item}
-
-@app.delete("/items/{item_id}")
-def delete_item(item_id: int):
-    return {"message": f"Item {item_id} deleted successfully", "item_id": item_id}
-
-# --- User Endpoints ---
-
-@app.get("/users/{user_id}")
-def read_user(user_id: int):
-    return {"user_id": user_id, "email": f"user{user_id}@example.com"}
-
-@app.post("/users/")
-def create_user(user: User):
-    return {"message": f"User {user.username} created successfully", "user": user}
-
-@app.put("/users/{user_id}")
-def update_user(user_id: int, user: User):
-    return {"message": f"User {user_id} updated successfully", "user_id": user_id, "user": user}
-
-@app.delete("/users/{user_id}")
-def delete_user(user_id: int):
-    return {"message": f"User {user_id} deleted successfully", "user_id": user_id}
