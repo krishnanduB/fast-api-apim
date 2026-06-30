@@ -19,8 +19,11 @@ class ItemUpdate(BaseModel):
     tax: float | None = None
 
 @router.get("/")
-def read_items():
-    return [{"item_id": 1, "name": "Item 1"}, {"item_id": 2, "name": "Item 2"}]
+def read_items(skip: int = 0, limit: int = 10, search: str | None = None):
+    return {
+        "query_params": {"skip": skip, "limit": limit, "search": search},
+        "items": [{"item_id": 1, "name": "Item 1"}, {"item_id": 2, "name": "Item 2"}]
+    }
 
 @router.get("/{item_id}")
 def read_item(item_id: int, q: str | None = None):

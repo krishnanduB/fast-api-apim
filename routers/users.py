@@ -19,8 +19,11 @@ class UserUpdate(BaseModel):
     disabled: bool | None = None
 
 @router.get("/")
-def read_users():
-    return [{"user_id": 1, "username": "user1"}, {"user_id": 2, "username": "user2"}]
+def read_users(skip: int = 0, limit: int = 10, is_active: bool | None = None):
+    return {
+        "query_params": {"skip": skip, "limit": limit, "is_active": is_active},
+        "users": [{"user_id": 1, "username": "user1"}, {"user_id": 2, "username": "user2"}]
+    }
 
 @router.get("/{user_id}")
 def read_user(user_id: int):

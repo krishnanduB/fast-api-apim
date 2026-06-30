@@ -30,20 +30,27 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
 
 ### 2. List Items (GET)
 - **Method:** `GET`
-- **URL:** `http://127.0.0.1:8000/items/`
-- **Description:** Retrieves a list of all items.
+- **URL:** `http://127.0.0.1:8000/items/?skip=0&limit=5&search=laptop`
+- **Description:** Retrieves a list of all items. You can use query parameters like `skip` (pagination), `limit` (max results), and `search` (filter string) by appending them to the URL after a `?`.
 - **Expected Response:**
   ```json
-  [
-      {
-          "item_id": 1,
-          "name": "Item 1"
+  {
+      "query_params": {
+          "skip": 0,
+          "limit": 5,
+          "search": "laptop"
       },
-      {
-          "item_id": 2,
-          "name": "Item 2"
-      }
-  ]
+      "items": [
+          {
+              "item_id": 1,
+              "name": "Item 1"
+          },
+          {
+              "item_id": 2,
+              "name": "Item 2"
+          }
+      ]
+  }
   ```
 
 ### 3. Read Item (GET)
@@ -149,20 +156,27 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
 
 ### 8. List Users (GET)
 - **Method:** `GET`
-- **URL:** `http://127.0.0.1:8000/users/`
-- **Description:** Retrieves a list of all users.
+- **URL:** `http://127.0.0.1:8000/users/?skip=0&limit=10&is_active=true`
+- **Description:** Retrieves a list of all users. You can use query parameters like `skip`, `limit`, and `is_active` (boolean flag) to filter the results.
 - **Expected Response:**
   ```json
-  [
-      {
-          "user_id": 1,
-          "username": "user1"
+  {
+      "query_params": {
+          "skip": 0,
+          "limit": 10,
+          "is_active": true
       },
-      {
-          "user_id": 2,
-          "username": "user2"
-      }
-  ]
+      "users": [
+          {
+              "user_id": 1,
+              "username": "user1"
+          },
+          {
+              "user_id": 2,
+              "username": "user2"
+          }
+      ]
+  }
   ```
 
 ### 9. Read User (GET)
