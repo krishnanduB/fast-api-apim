@@ -1,0 +1,18 @@
+[
+  {
+    "item_id": 1,
+    "name": "Item 1",
+    "description": null,
+    "price": 10.0,
+    "tax": null,
+    "category": "Electronics"
+  },
+  {
+    "item_id": 2,
+    "name": "Item 2",
+    "description": null,
+    "price": 15.0,
+    "tax": null,
+    "category": "Books"
+  }
+]

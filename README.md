@@ -43,11 +43,13 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
       "items": [
           {
               "item_id": 1,
-              "name": "Item 1"
+              "name": "Item 1",
+              "category": "Electronics"
           },
           {
               "item_id": 2,
-              "name": "Item 2"
+              "name": "Item 2",
+              "category": "Books"
           }
       ]
   }
@@ -75,7 +77,8 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
       "name": "Laptop",
       "description": "A high performance laptop",
       "price": 1500.00,
-      "tax": 150.00
+      "tax": 150.00,
+      "category": "Electronics"
   }
   ```
 - **Expected Response:**
@@ -86,7 +89,8 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
           "name": "Laptop",
           "description": "A high performance laptop",
           "price": 1500.0,
-          "tax": 150.0
+          "tax": 150.0,
+          "category": "Electronics"
       }
   }
   ```
@@ -101,7 +105,8 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
       "name": "Gaming Laptop",
       "description": "Updated description",
       "price": 2000.00,
-      "tax": 200.00
+      "tax": 200.00,
+      "category": "Electronics"
   }
   ```
 - **Expected Response:**
@@ -113,7 +118,8 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
           "name": "Gaming Laptop",
           "description": "Updated description",
           "price": 2000.0,
-          "tax": 200.0
+          "tax": 200.0,
+          "category": "Electronics"
       }
   }
   ```
@@ -137,7 +143,8 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
           "name": null,
           "description": null,
           "price": 1800.0,
-          "tax": null
+          "tax": null,
+          "category": null
       }
   }
   ```
