@@ -267,3 +267,20 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   ```
 
 > **Tip:** You can also view the automatically generated Swagger UI documentation by navigating to `http://127.0.0.1:8000/docs` in your web browser while the application is running. This provides a great interactive interface for testing your API right in the browser!
+
+## Adding to Azure API Management (APIM)
+
+FastAPI automatically generates an OpenAPI specification (`openapi.json`), which makes it incredibly easy to import into Azure API Management.
+
+To import this API into Azure APIM:
+1. In the Azure Portal, go to your API Management service.
+2. Select **APIs** from the left menu.
+3. Choose **OpenAPI** (Create from OpenAPI specification).
+4. Fill in the form as shown in the image below:
+   - **OpenAPI specification:** `http://<your-vm-ip>:8000/openapi.json` (e.g., `http://52.188.106.168:8000/openapi.json`)
+   - **Display name:** `FastAPI`
+   - **Name:** `fastapi`
+   - **API URL suffix:** *(leave blank)*
+5. Click **Create**.
+
+![Azure APIM Setup](apim-setup.png)
