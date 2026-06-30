@@ -28,7 +28,25 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 2. Read Item (GET)
+### 2. List Items (GET)
+- **Method:** `GET`
+- **URL:** `http://127.0.0.1:8000/items/`
+- **Description:** Retrieves a list of all items.
+- **Expected Response:**
+  ```json
+  [
+      {
+          "item_id": 1,
+          "name": "Item 1"
+      },
+      {
+          "item_id": 2,
+          "name": "Item 2"
+      }
+  ]
+  ```
+
+### 3. Read Item (GET)
 - **Method:** `GET`
 - **URL:** `http://127.0.0.1:8000/items/1?q=test`
 - **Description:** Retrieves an item by its ID. You can also pass an optional query parameter `q`.
@@ -40,7 +58,7 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 3. Create Item (POST)
+### 4. Create Item (POST)
 - **Method:** `POST`
 - **URL:** `http://127.0.0.1:8000/items/`
 - **Description:** Creates a new item.
@@ -66,7 +84,7 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 4. Update Item (PUT)
+### 5. Update Item (PUT)
 - **Method:** `PUT`
 - **URL:** `http://127.0.0.1:8000/items/1`
 - **Description:** Updates an existing item.
@@ -93,7 +111,7 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 5. Partially Update Item (PATCH)
+### 6. Partially Update Item (PATCH)
 - **Method:** `PATCH`
 - **URL:** `http://127.0.0.1:8000/items/1`
 - **Description:** Partially updates an existing item.
@@ -117,7 +135,7 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 6. Delete Item (DELETE)
+### 7. Delete Item (DELETE)
 - **Method:** `DELETE`
 - **URL:** `http://127.0.0.1:8000/items/1`
 - **Description:** Deletes an item by its ID.
@@ -129,7 +147,37 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 7. Create User (POST)
+### 8. List Users (GET)
+- **Method:** `GET`
+- **URL:** `http://127.0.0.1:8000/users/`
+- **Description:** Retrieves a list of all users.
+- **Expected Response:**
+  ```json
+  [
+      {
+          "user_id": 1,
+          "username": "user1"
+      },
+      {
+          "user_id": 2,
+          "username": "user2"
+      }
+  ]
+  ```
+
+### 9. Read User (GET)
+- **Method:** `GET`
+- **URL:** `http://127.0.0.1:8000/users/1`
+- **Description:** Retrieves a user by their ID.
+- **Expected Response:**
+  ```json
+  {
+      "user_id": 1,
+      "email": "user1@example.com"
+  }
+  ```
+
+### 10. Create User (POST)
 - **Method:** `POST`
 - **URL:** `http://127.0.0.1:8000/users/`
 - **Description:** Creates a new user.
@@ -155,19 +203,7 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 8. Read User (GET)
-- **Method:** `GET`
-- **URL:** `http://127.0.0.1:8000/users/1`
-- **Description:** Retrieves a user by their ID.
-- **Expected Response:**
-  ```json
-  {
-      "user_id": 1,
-      "email": "user1@example.com"
-  }
-  ```
-
-### 9. Update User (PUT)
+### 11. Update User (PUT)
 - **Method:** `PUT`
 - **URL:** `http://127.0.0.1:8000/users/1`
 - **Description:** Updates an existing user.
@@ -194,7 +230,31 @@ You can use Postman to test the API endpoints. Below are the instructions and sa
   }
   ```
 
-### 10. Delete User (DELETE)
+### 12. Partially Update User (PATCH)
+- **Method:** `PATCH`
+- **URL:** `http://127.0.0.1:8000/users/1`
+- **Description:** Partially updates an existing user.
+- **Body:** Under the Body tab, select **raw** and choose **JSON** format.
+  ```json
+  {
+      "disabled": true
+  }
+  ```
+- **Expected Response:**
+  ```json
+  {
+      "message": "User 1 partially updated successfully",
+      "user_id": 1,
+      "user": {
+          "username": null,
+          "email": null,
+          "full_name": null,
+          "disabled": true
+      }
+  }
+  ```
+
+### 13. Delete User (DELETE)
 - **Method:** `DELETE`
 - **URL:** `http://127.0.0.1:8000/users/1`
 - **Description:** Deletes a user by their ID.
